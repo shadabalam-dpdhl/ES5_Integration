@@ -1,2 +1,5 @@
 # ES5_Integration
-Integration Package to access the SAP Demo Trial System ES5
+This CAP Application is used to offer a generic entry point to the backend on-premise SAP System 
+represented by the Destination ES5. This Destination would be pre-configured at the 
+Subaccount Level. 
+
