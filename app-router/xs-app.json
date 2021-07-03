@@ -1,0 +1,9 @@
+{
+	"authenticationMethod": "none",
+	"routes": [{
+		"source": "/(.*)",
+        "destination": "ES5",
+        "target": "$1",
+        "csrfProtection": false
+	}]
+}

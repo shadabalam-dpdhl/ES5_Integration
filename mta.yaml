@@ -1,0 +1,33 @@
+_schema-version: "3.1"
+ID: es6.approuter
+version: 0.0.1
+description: "Demo on consuming ES5 destination service via app router"
+parameters:
+  enable-parallel-deployments: true
+
+modules:
+  - name: es5-app-router
+    type: approuter.nodejs
+    path: app-router
+    parameters:
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: es5-destination
+      - name: es5-uaa
+    provides:
+      - name: es5_odata_provider_api
+        properties:
+          public: true # this will make sure that it can be consumed by other mta project
+          srv-url: ${default-url}
+          url: ${default-url}
+resources:
+  - name: es5-uaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path: ./xs-security.json
+      service-plan: application
+      service: xsuaa
+
+  - name: es5-destination
+    type: org.cloudfoundry.existing-service
